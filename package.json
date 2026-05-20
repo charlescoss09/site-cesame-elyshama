@@ -1,0 +1,26 @@
+{
+  "name": "cesame-elyshama",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.14.1",
+    "react-icons": "^4.10.1",
+    "framer-motion": "^10.12.8",
+    "axios": "^1.4.0"
+  },
+  "devDependencies": {
+    "vite": "^5.1.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "tailwindcss": "^3.4.7",
+    "postcss": "^8.4.23",
+    "autoprefixer": "^10.4.14"
+  }
+}
