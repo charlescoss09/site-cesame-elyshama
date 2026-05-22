@@ -17,17 +17,23 @@ export default function ContactForm(){
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow p-6 max-w-xl">
-      {status && <div className={`p-3 rounded mb-4 ${status.type==='success' ? 'bg-green-50 text-cesame-green' : 'bg-red-50 text-red-600'}`}>{status.message}</div>}
-      <div className="grid grid-cols-1 gap-3">
-        <input name="name" value={form.name} onChange={handleChange} placeholder="Nom" required className="p-3 border rounded" />
-        <input name="email" type="email" value={form.email} onChange={handleChange} placeholder="Email" required className="p-3 border rounded" />
-        <input name="phone" value={form.phone} onChange={handleChange} placeholder="Téléphone" className="p-3 border rounded" />
-        <input name="subject" value={form.subject} onChange={handleChange} placeholder="Sujet" className="p-3 border rounded" />
-        <textarea name="message" value={form.message} onChange={handleChange} placeholder="Message" className="p-3 border rounded" rows={5} />
+    <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-lg p-8 max-w-2xl">
+      {status && (
+        <div className={`p-4 rounded-lg mb-6 text-sm font-semibold ${status.type==='success' ? 'bg-primary/10 text-primary border border-primary/20' : 'bg-red-50 text-red-600 border border-red-200'}`}>
+          {status.message}
+        </div>
+      )}
+      <div className="grid grid-cols-1 gap-5">
+        <input name="name" value={form.name} onChange={handleChange} placeholder="Votre nom" required className="p-4 border border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition" />
+        <input name="email" type="email" value={form.email} onChange={handleChange} placeholder="Votre email" required className="p-4 border border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition" />
+        <input name="phone" value={form.phone} onChange={handleChange} placeholder="Votre téléphone (optionnel)" className="p-4 border border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition" />
+        <input name="subject" value={form.subject} onChange={handleChange} placeholder="Sujet" required className="p-4 border border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition" />
+        <textarea name="message" value={form.message} onChange={handleChange} placeholder="Votre message" required className="p-4 border border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition" rows={5} />
       </div>
-      <div className="mt-4">
-        <button type="submit" className="bg-cesame-green text-white px-5 py-2 rounded">Envoyer</button>
+      <div className="mt-6">
+        <button type="submit" className="w-full bg-secondary text-white px-6 py-4 rounded-lg font-bold hover:bg-secondary/90 transition transform hover:scale-105">
+          Envoyer le message
+        </button>
       </div>
     </form>
   )
