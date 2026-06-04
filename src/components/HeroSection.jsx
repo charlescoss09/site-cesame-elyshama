@@ -1,125 +1,132 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { HiSearch, HiLocationMarker } from 'react-icons/hi'
+import { HiSearch, HiArrowRight } from 'react-icons/hi'
 
 export default function HeroSection(){
-  const [searchTerm, setSearchTerm] = useState('')
-  const [location, setLocation] = useState('')
-
   const titleVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } }
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: 'easeOut' } }
   }
 
   const subtitleVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.2, ease: 'easeOut' } }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.9, delay: 0.2, ease: 'easeOut' } }
   }
 
-  const formVariants = {
+  const buttonVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.4, ease: 'easeOut' } }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.9, delay: 0.35, ease: 'easeOut' } }
   }
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-primary/5 via-accent/5 to-transparent pt-20 pb-20">
-      {/* Decorative circles */}
-      <div className="absolute top-10 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl"></div>
-      <div className="absolute -bottom-10 -left-10 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"></div>
-      
+    <section className="relative overflow-hidden bg-[#060f22] pt-24 pb-24 text-white">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.16),_transparent_22%),radial-gradient(circle_at_right,_rgba(34,211,238,0.12),_transparent_18%)] pointer-events-none"></div>
+      <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 w-[28rem] h-[28rem] rounded-full bg-cyan-500/10 blur-3xl"></div>
+      <div className="absolute -right-24 top-16 w-80 h-80 rounded-full bg-slate-400/10 blur-3xl"></div>
+
       <div className="container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          
-          {/* Left Content */}
-          <motion.div initial="hidden" animate="visible">
-            <motion.h1 variants={titleVariants} className="text-5xl md:text-6xl font-bold text-dark leading-tight">
-              Trouvez votre <span className="text-primary">spécialiste</span>
-            </motion.h1>
-
-            <motion.p variants={subtitleVariants} className="mt-6 text-lg text-gray-600 leading-relaxed">
-              Accédez à des consultations professionnelles avec une approche holistique et naturelle pour votre bien-être.
-            </motion.p>
-
-            {/* Search Form */}
-            <motion.div variants={formVariants} className="mt-10 bg-white rounded-2xl shadow-2xl p-8 space-y-4">
-              <div className="relative">
-                <HiSearch className="absolute left-4 top-4 text-gray-400 text-xl" />
-                <input 
-                  type="text" 
-                  placeholder="Spécialité ou service..." 
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition"
-                />
-              </div>
-              
-              <div className="relative">
-                <HiLocationMarker className="absolute left-4 top-4 text-gray-400 text-xl" />
-                <input 
-                  type="text" 
-                  placeholder="Localisation..." 
-                  value={location}
-                  onChange={(e) => setLocation(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition"
-                />
-              </div>
-
-              <button className="w-full bg-secondary text-white py-3 rounded-lg font-semibold hover:bg-secondary/90 transition transform hover:scale-105">
-                RECHERCHER
-              </button>
+          <motion.div initial="hidden" animate="visible" className="space-y-8">
+            <motion.div variants={titleVariants} className="inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs uppercase tracking-[0.3em] text-sky-200 shadow-sm shadow-cyan-500/10">
+              <span className="block h-2 w-2 rounded-full bg-cyan-300"></span>
+              Pharmacie en ligne
             </motion.div>
 
-            {/* Quick Stats */}
-            <motion.div variants={formVariants} className="mt-10 flex gap-8">
-              <div>
-                <p className="text-2xl font-bold text-primary">500+</p>
-                <p className="text-sm text-gray-600">Professionnels</p>
+            <motion.h1 variants={titleVariants} className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-tight">
+              ONLINE PHARMACY
+            </motion.h1>
+
+            <motion.p variants={subtitleVariants} className="max-w-xl text-lg text-slate-200/90 leading-relaxed">
+              Accédez à vos médicaments, conseils santé et services de pharmacie en ligne avec livraison rapide et support sécurisé.
+            </motion.p>
+
+            <motion.div variants={buttonVariants} className="flex flex-col sm:flex-row gap-4">
+              <Link to="/products" className="inline-flex items-center justify-center gap-2 rounded-full bg-cyan-400 px-8 py-3 text-sm font-semibold text-slate-950 shadow-xl shadow-cyan-500/20 hover:bg-cyan-300 transition">
+                Découvrir les produits
+                <HiArrowRight className="w-5 h-5" />
+              </Link>
+              <Link to="/appointment" className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 px-8 py-3 text-sm font-semibold text-white hover:bg-white/15 transition">
+                Prendre rendez-vous
+              </Link>
+            </motion.div>
+
+            <motion.div variants={buttonVariants} className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-[0_30px_80px_-50px_rgba(56,189,248,0.45)]">
+                <p className="text-3xl font-bold text-cyan-300">24/7</p>
+                <p className="mt-2 text-sm text-slate-300">Support en ligne</p>
               </div>
-              <div>
-                <p className="text-2xl font-bold text-primary">98%</p>
-                <p className="text-sm text-gray-600">Satisfaction</p>
+              <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-[0_30px_80px_-50px_rgba(56,189,248,0.35)]">
+                <p className="text-3xl font-bold text-cyan-300">Livraison</p>
+                <p className="mt-2 text-sm text-slate-300">Rapide et sécurisée</p>
               </div>
-              <div>
-                <p className="text-2xl font-bold text-primary">24/7</p>
-                <p className="text-sm text-gray-600">Disponible</p>
+              <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-[0_30px_80px_-50px_rgba(56,189,248,0.25)]">
+                <p className="text-3xl font-bold text-cyan-300">Certifié</p>
+                <p className="mt-2 text-sm text-slate-300">Produits garantis</p>
               </div>
             </motion.div>
           </motion.div>
 
-          {/* Right Side - Decorative Section */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="hidden lg:flex justify-center items-center"
-          >
-            <div className="relative w-80 h-96">
-              {/* Floating cards */}
-              <motion.div 
-                animate={{ y: [0, -20, 0] }}
-                transition={{ duration: 4, repeat: Infinity }}
-                className="absolute top-10 right-0 bg-white rounded-xl p-4 shadow-lg"
-              >
-                <p className="text-xs text-gray-500">Consultation disponible</p>
-                <p className="font-semibold text-primary">Dr. Bien-être</p>
-              </motion.div>
-
-              <motion.div 
-                animate={{ y: [0, 20, 0] }}
-                transition={{ duration: 4, repeat: Infinity, delay: 1 }}
-                className="absolute bottom-10 left-0 bg-white rounded-xl p-4 shadow-lg"
-              >
-                <p className="text-xs text-gray-500">Service recommandé</p>
-                <p className="font-semibold text-accent">Régénération +</p>
-              </motion.div>
-
-              {/* Center decoration */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-40 h-40 bg-gradient-to-br from-primary to-accent rounded-3xl opacity-20"></div>
+          <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.9, delay: 0.3 }} className="relative mx-auto w-full max-w-[420px]">
+            <div className="relative rounded-[2rem] border border-white/10 bg-slate-950/95 p-5 shadow-2xl shadow-cyan-500/10">
+              <div className="flex items-center justify-between rounded-[1.5rem] border border-white/10 bg-slate-900/90 px-5 py-4">
+                <div className="text-xs uppercase tracking-[0.3em] text-slate-400">YOUR LOGO</div>
+                <div className="flex items-center gap-3">
+                  <div className="h-2.5 w-2.5 rounded-full bg-cyan-300"></div>
+                  <div className="h-2.5 w-2.5 rounded-full bg-slate-400/60"></div>
+                  <div className="h-2.5 w-2.5 rounded-full bg-slate-400/60"></div>
+                </div>
               </div>
 
-              <p className="absolute inset-x-0 bottom-0 text-center text-6xl">👨‍⚕️</p>
+              <div className="mt-5 rounded-[1.75rem] bg-gradient-to-br from-cyan-500 via-sky-500 to-blue-900 p-6 text-white shadow-[0_20px_90px_-40px_rgba(56,189,248,0.85)]">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.3em] text-cyan-100/80">Smart healthcare</p>
+                    <p className="mt-4 text-sm text-slate-100/85">Votre pharmacie en un clic</p>
+                  </div>
+                  <div className="flex h-12 w-12 items-center justify-center rounded-3xl bg-white/15 text-lg font-bold text-white">
+                    +
+                  </div>
+                </div>
+                <div className="mt-8 space-y-4">
+                  <div className="rounded-3xl bg-white/10 p-4">
+                    <p className="text-xs uppercase tracking-[0.2em] text-slate-200/80">Vitamine B1</p>
+                    <p className="mt-3 text-2xl font-bold">Formule forte</p>
+                  </div>
+                  <div className="rounded-3xl bg-white/10 p-4">
+                    <p className="text-xs uppercase tracking-[0.2em] text-slate-200/80">Soins rapides</p>
+                    <p className="mt-3 text-2xl font-bold">Disponible</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="absolute -left-10 top-12 flex flex-col gap-5">
+              <div className="relative w-28 h-36 rounded-[2rem] bg-white/90 border border-white/15 p-4 shadow-xl">
+                <div className="h-4 w-14 rounded-full bg-slate-900/10 mb-5"></div>
+                <div className="rounded-[1.5rem] bg-cyan-500/20 p-3 text-slate-900">
+                  <p className="text-sm font-semibold">B1</p>
+                  <p className="text-xs">Énergie</p>
+                </div>
+              </div>
+              <div className="relative w-24 h-28 rounded-[2rem] bg-slate-800/90 border border-white/10 p-4 shadow-lg">
+                <div className="h-3 w-12 rounded-full bg-slate-500/40 mb-4"></div>
+                <div className="rounded-2xl bg-slate-900 p-3 text-white">
+                  <p className="text-sm font-semibold">D</p>
+                  <p className="text-xs text-slate-300">Immunité</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="absolute -right-10 bottom-10 flex flex-col gap-4">
+              <div className="rounded-full bg-cyan-400/15 p-3 shadow-[0_20px_80px_-60px_rgba(56,189,248,0.6)]">
+                <div className="h-4 w-20 rounded-full bg-white/60"></div>
+              </div>
+              <div className="grid grid-cols-3 gap-2">
+                <span className="h-3 rounded-full bg-white/80"></span>
+                <span className="h-3 rounded-full bg-white/80"></span>
+                <span className="h-3 rounded-full bg-white/80"></span>
+              </div>
             </div>
           </motion.div>
         </div>

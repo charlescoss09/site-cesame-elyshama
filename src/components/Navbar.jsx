@@ -22,52 +22,46 @@ export default function Navbar(){
   ]
 
   return (
-    <header className={`w-full top-0 z-50 transition-all duration-300 sticky ${scrolled ? 'shadow-lg bg-white/95 backdrop-blur-sm' : 'bg-white'}`}>
-      <div className="container flex items-center justify-between py-3 md:py-4">
-        
-        {/* Logo */}
+    <header className={`w-full top-0 z-50 transition-all duration-300 sticky ${scrolled ? 'shadow-2xl bg-[#060f22]/95 backdrop-blur-sm' : 'bg-transparent'}`}>
+      <div className="container flex items-center justify-between py-4">
         <Link to="/" className="flex items-center gap-3 flex-shrink-0">
-          <motion.div whileHover={{ scale: 1.05 }} className="w-11 h-11 rounded-lg bg-gradient-to-br from-primary to-accent shadow-md flex items-center justify-center text-white font-bold text-sm">
+          <motion.div whileHover={{ scale: 1.05 }} className="w-11 h-11 rounded-2xl bg-gradient-to-br from-cyan-400 to-sky-500 shadow-lg flex items-center justify-center text-white font-bold text-sm">
             🏥
           </motion.div>
           <div className="hidden sm:block">
-            <div className="font-bold text-sm text-dark">CESAME</div>
-            <div className="text-xs text-primary font-semibold">ELYSHAMA</div>
+            <div className="font-bold text-sm text-white">CESAME</div>
+            <div className="text-xs text-cyan-200 font-semibold">ELYSHAMA</div>
           </div>
         </Link>
 
-        {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
           {links.map(link=> (
-            <Link key={link.href} to={link.href} className="text-gray-700 text-sm font-medium hover:text-primary transition-colors duration-200">
+            <Link key={link.href} to={link.href} className="text-slate-200 text-sm font-medium hover:text-cyan-300 transition-colors duration-200">
               {link.label}
             </Link>
           ))}
         </nav>
 
-        {/* CTA Button */}
         <div className="hidden md:block">
-          <Link to="/appointment" className="bg-secondary text-white px-5 py-2 rounded-full shadow-md hover:shadow-lg hover:bg-secondary/90 transition-all duration-300 text-sm font-semibold">
+          <Link to="/appointment" className="rounded-full border border-white/20 bg-white/10 px-5 py-2 text-sm font-semibold text-white shadow-sm shadow-cyan-500/20 hover:bg-white/15 transition-all duration-300">
             Rendez-vous
           </Link>
         </div>
 
-        {/* Mobile Menu Button */}
-        <button className="md:hidden p-1" onClick={()=>setOpen(v=>!v)} aria-label="menu">
+        <button className="md:hidden p-2 text-white" onClick={()=>setOpen(v=>!v)} aria-label="menu">
           {open ? <HiOutlineX size={24} /> : <HiOutlineMenu size={24} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
       {open && (
-        <motion.div initial={{opacity:0, y:-10}} animate={{opacity:1, y:0}} className="md:hidden bg-white shadow-lg">
+        <motion.div initial={{opacity:0, y:-10}} animate={{opacity:1, y:0}} className="md:hidden bg-[#061523] shadow-2xl border-t border-white/10">
           <div className="flex flex-col px-4 py-4 gap-3">
             {links.map(link=> (
-              <Link key={link.href} to={link.href} onClick={()=>setOpen(false)} className="text-gray-700 px-3 py-2 hover:text-primary transition-colors">
+              <Link key={link.href} to={link.href} onClick={()=>setOpen(false)} className="text-slate-200 px-3 py-2 rounded-xl hover:bg-white/5 transition-colors">
                 {link.label}
               </Link>
             ))}
-            <Link to="/appointment" onClick={()=>setOpen(false)} className="mt-2 bg-secondary text-white px-4 py-2 rounded-full text-center font-semibold">
+            <Link to="/appointment" onClick={()=>setOpen(false)} className="mt-2 rounded-full bg-cyan-400 px-4 py-2 text-center font-semibold text-slate-950 shadow-lg shadow-cyan-500/20">
               Rendez-vous
             </Link>
           </div>
